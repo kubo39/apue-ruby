@@ -8,5 +8,6 @@ stdout_io = IO.new(STDOUT_FILENO)
 
 while true
   buf = stdin_io.sysread(BUFFSIZE)
+  break if buf.empty?
   stdout_io.syswrite(buf)
 end
