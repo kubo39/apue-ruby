@@ -7,7 +7,11 @@ stdin_io = IO.new(STDIN_FILNO)
 stdout_io = IO.new(STDOUT_FILENO)
 
 while true
-  buf = stdin_io.sysread(BUFFSIZE)
+  begin
+    buf = stdin_io.sysread(BUFFSIZE)
+  rescue EOFError
+    break
+  end
   break if buf.empty?
   stdout_io.syswrite(buf)
 end
