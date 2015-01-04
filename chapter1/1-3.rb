@@ -1,5 +1,3 @@
-while true
-  c = STDIN.getc
-  break if c.nil?
+while c = STDIN.getc
   STDOUT.putc(c)
 end
