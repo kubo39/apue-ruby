@@ -3,7 +3,7 @@ STDOUT_FILENO = 1
 
 BUFFSIZE = 4096
 
-stdin_io = IO.new(STDIN_FILNO)
+stdin_io = IO.new(STDIN_FILENO)
 stdout_io = IO.new(STDOUT_FILENO)
 
 while true
