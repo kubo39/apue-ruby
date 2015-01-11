@@ -44,13 +44,15 @@ module Signal
   SIG_SETMASK = 2
 
   class SigprocmaskError < Exception; end
+  class SigpendingError < Exception; end
 
   Sigset = SignalExt::Sigset
 
   def self.sigprocmask(how, set, oldset)
-    if SignalExt.sigprocmask(how, set, oldset) < 0
+    if SignalExt.sigprocmask(how, set, oldset) != 0
       raise SigprocmaskError
     end
+    return 0
   end
 
   def self.sigismember(set, signo)
@@ -66,6 +68,9 @@ module Signal
   end
 
   def self.sigpending(set)
-    SignalExt.sigpending(set)
+    if SignalExt.sigpending(set) != 0
+      raise SigpendingError
+    end
+    return 0
   end
 end
