@@ -1,10 +1,6 @@
 require 'ffi'
 
 
-SIG_BLOCK = 0
-SIG_UNBLOCK = 1
-SIG_SETMASK = 2
-
 module Unistd
   extend FFI::Library
   ffi_lib 'libc.so.6'
@@ -43,6 +39,10 @@ end
 
 
 module Signal
+  SIG_BLOCK = 0
+  SIG_UNBLOCK = 1
+  SIG_SETMASK = 2
+
   class SigprocmaskError < Exception; end
 
   Sigset = SignalExt::Sigset
