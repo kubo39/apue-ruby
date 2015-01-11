@@ -1,6 +1,6 @@
 require 'ffi'
 
-class SigprocmaskError < SystemCallError; end
+class SigprocmaskError < Exception; end
 
 class Sigset < FFI::Struct
   layout :__val, :ulong
