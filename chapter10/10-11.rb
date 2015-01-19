@@ -6,11 +6,10 @@ trap("QUIT") {
 }
 
 newmask = Signal::Sigset.new
-Signal.sigemptyset(newmask)
 Signal.sigaddset(newmask, Signal.list["QUIT"])
 
 oldmask = Signal::Sigset.new
-Signal.sigprocmask(Signl::SIG_BLOCK, newmask, oldmask)
+Signal.sigprocmask(Signal::SIG_BLOCK, newmask, oldmask)
 
 sleep 5
 
